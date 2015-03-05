@@ -1,0 +1,21 @@
+[user]
+  name = rynagash
+  email = nagashi.nishi@gmail.com
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[color]
+  ui = auto
+
+[alias]
+  l = log --all --graph --pretty='format:%C(yellow)%h%C(cyan)%d %Cred%ar %Creset%s'
+  ignore = !"f() { local s=$1; shift; while [ $# -gt 0 ]; do s="$s,$1"; shift; done; curl "http://www.gitignore.io/api/$s"; }; f"
+
+[merge]
+   ff = false
+
+[pull]
+   rebase = true
+[push]
+  default = matching
