@@ -51,7 +51,7 @@ zstyle ':zle:*' word-style unspecified
 # 補完
 # 補完機能を有効にする
 autoload -Uz compinit
-compinit
+compinit -u
 
 #if [ -n "$LS_COLORS" ]; then
  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -70,6 +70,12 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
+#function print_known_hosts (){ 
+#    if [ -f $HOME/.ssh/known_hosts ]; then
+#        cat $HOME/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1 
+#    fi
+#}
+#_cache_hosts=($( print_known_hosts ))
 
 ########################################
 # vcs_info
