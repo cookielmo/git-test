@@ -248,7 +248,6 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-alias nssh='ssh -A edu14028.fedu.ssk.ynwm.yahoo.co.jp'
 
 ########################################
 # OS 別の設定
@@ -260,7 +259,12 @@ case ${OSTYPE} in
         export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
         alias ls='ls -G -F'
         ;;
+    linux*)
+        #Linux用の設定
+		alias ls='ls -F --color=auto'
+		source /usr/local/rvm/scripts/rvm
+		export rvmsudo_secure_path=1
+	    ;;
 esac
 
 # vim:set ft=zsh:
-
