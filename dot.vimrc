@@ -16,7 +16,9 @@ set wrapscan "検索時に最後まで行ったら最初に戻る
 "新しい行のインデントを現在行と同じにする
 set autoindent 
 
-set mouse=a
+"if has('mouse')
+  set mouse=a
+"endif
 
 syntax on
 
