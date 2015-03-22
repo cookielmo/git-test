@@ -16,9 +16,9 @@ set wrapscan "検索時に最後まで行ったら最初に戻る
 "新しい行のインデントを現在行と同じにする
 set autoindent 
 
-"if has('mouse')
+if has('mouse')
   set mouse=a
-"endif
+endif
 
 syntax on
 
@@ -26,3 +26,6 @@ syntax on
 set number
 set laststatus=2
 set statusline=%F%r%h%=
+
+" swpを作らない
+set noswapfile

@@ -268,8 +268,6 @@ case ${OSTYPE} in
     linux*)
         #Linux用の設定
 		alias ls='ls -F --color=auto'
-		source /usr/local/rvm/scripts/rvm
-		export rvmsudo_secure_path=1
 	    ;;
 esac
 
