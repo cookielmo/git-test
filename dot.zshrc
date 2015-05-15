@@ -70,9 +70,9 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-#function print_known_hosts (){ 
+#function print_known_hosts (){
 #    if [ -f $HOME/.ssh/known_hosts ]; then
-#        cat $HOME/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1 
+#        cat $HOME/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
 #    fi
 #}
 #_cache_hosts=($( print_known_hosts ))
@@ -261,8 +261,6 @@ case ${OSTYPE} in
     darwin*)
         #Mac用の設定
         export CLICOLOR=1
-        export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-        export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
         alias ls='ls -G -F'
         ;;
     linux*)
