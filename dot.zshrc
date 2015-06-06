@@ -24,19 +24,20 @@ SAVEHIST=1000000
 # 2行表示
 PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
 %D{%m/%d %T} %# "
+RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # set terminal title including current directory
 #
 case "${TERM}" in
-kterm*|xterm*)
-  precmd() {
-    echo -ne "\033]0;${HOST%%.*}:${PWD}\007"
-  }
+    kterm*|xterm*)
+      precmd() {
+        echo -ne "\033]0;${HOST%%.*}:${PWD}\007"
+      }
 #  export LSCOLORS=exfxcxdxbxegedabagacad
 #  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 #  zstyle ':completion:*' list-colors \
 #    'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-  ;;
+    ;;
 esac
 
 # 単語の区切り文字を指定する
@@ -103,7 +104,6 @@ function _update_vcs_info_msg() {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
-RPROMPT="%1(v|%F{green}%1v%f|)"
 
 ###############
 chpwd() {
@@ -145,29 +145,6 @@ ls_abbrev() {
         echo "$ls_result"
     fi
 }
-
-##############
-# 空の状態でEnterを入力したときに、lsとgit statusを表示
-function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    #ls
-    # ↓おすすめ
-    ls_abbrev
-    echo
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb 2> /dev/null
-        echo
-    fi
-    zle reset-prompt
-    return 0
-}
-zle -N do_enter
-bindkey '^m' do_enter
 
 ########################################
 # オプション
@@ -265,8 +242,8 @@ case ${OSTYPE} in
         ;;
     linux*)
         #Linux用の設定
-		alias ls='ls -F --color=auto'
-	    ;;
+        alias ls='ls -F --color=auto'
+        ;;
 esac
 
 # vim:set ft=zsh:
