@@ -1,21 +1,34 @@
 [user]
-  name = rynagash
-  email = nagashi.nishi@gmail.com
+	name = rynagash
+	email = nagashi.nishi@gmail.com
 [core]
-  excludesfile = ~/.gitignore
-  editor = vim
+	excludesfile = ~/.gitignore
+	editor = vim
 
 [color]
-  ui = auto
+	ui = auto
 
 [alias]
-  l = log --all --graph --pretty='format:%C(yellow)%h%C(cyan)%d %Cred%ar %Creset%s'
-  ignore = !"f() { local s=$1; shift; while [ $# -gt 0 ]; do s="$s,$1"; shift; done; curl "http://www.gitignore.io/api/$s"; }; f"
+	l = log --all --graph --pretty='format:%C(yellow)%h%C(cyan)%d %Cred%ar %Creset%s'
+	ignore = !"f() { local s=$1; shift; while [ $# -gt 0 ]; do s="$s,$1"; shift; done; curl "http://www.gitignore.io/api/$s"; }; f"
 
 [merge]
-   ff = false
+	ff = false
 
 [pull]
-   rebase = true
+	rebase = true
+
 [push]
-  default = matching
+	default = matching
+
+[difftool]
+	prompt = false
+
+[pager]
+	difftool = true
+
+[diff]
+	tool = icdiff
+
+[difftool "icdiff"]
+	cmd = icdiff --whole-file --recursive --highlight --line-numbers -L \"$BASE\" -L \"$REMOTE\" \"$LOCAL\" \"$REMOTE\"
