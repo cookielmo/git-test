@@ -11,7 +11,7 @@ autoload -Uz colors
 colors
 
 # emacs 風キーバインドにする
-# bindkey -e
+bindkey -e
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -28,17 +28,17 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # set terminal title including current directory
 #
-case "${TERM}" in
-    kterm*|xterm*)
-      precmd() {
-        echo -ne "\033]0;${HOST%%.*}:${PWD}\007"
-      }
+# case "${TERM}" in
+#     kterm*|xterm*)
+#       precmd() {
+#         echo -ne "\033]0;${HOST%%.*}:${PWD}\007"
+#       }
 #  export LSCOLORS=exfxcxdxbxegedabagacad
 #  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 #  zstyle ':completion:*' list-colors \
 #    'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-esac
+#     ;;
+# esac
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -165,6 +165,7 @@ setopt auto_cd
 
 # cd したら自動的にpushdする
 setopt auto_pushd
+
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
 
@@ -190,13 +191,13 @@ setopt hist_reduce_blanks
 setopt auto_menu
 
 # 高機能なワイルドカード展開を使用する
-setopt extended_glob
+# setopt extended_glob
 
 ########################################
 # キーバインド
 
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
+# bindkey '^R' history-incremental-pattern-search-backward
 
 ########################################
 # エイリアス
@@ -220,16 +221,16 @@ alias grep='grep --color'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then
-    # Mac
-    alias -g C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    alias -g C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then
-    # Cygwin
-    alias -g C='| putclip'
-fi
+# if which pbcopy >/dev/null 2>&1 ; then
+#     # Mac
+#     alias -g C='| pbcopy'
+# elif which xsel >/dev/null 2>&1 ; then
+#     # Linux
+#     alias -g C='| xsel --input --clipboard'
+# elif which putclip >/dev/null 2>&1 ; then
+#     # Cygwin
+#     alias -g C='| putclip'
+# fi
 
 
 ########################################
@@ -239,6 +240,31 @@ case ${OSTYPE} in
         #Mac用の設定
         export CLICOLOR=1
         alias ls='ls -G -F'
+
+        # conoha
+        export OS_USERNAME=gncu23171778
+        export OS_TENANT_NAME=gnct23171778
+        export OS_PASSWORD=Admin@2016
+        export OS_AUTH_URL=https://identity.tyo1.conoha.io/v2.0
+
+        # phpenv
+        export PHP_BUILD_CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl) --with-libxml-dir=$(brew --prefix libxml2)"
+
+        # rbenv
+        # export RBENV_ROOT=/usr/local/bar/rbenv
+        # export PATH=$RBENV_ROOT/bin:$PATH
+        # eval "$(rbenv init -)"
+
+        # ndenv
+        export PATH=$PATH:`npm bin -g`
+
+        # phpenv
+        # export PATH="/Users/cookielmo/.phpenv/bin:$PATH"
+        # eval "$(phpenv init -)"
+
+        # direnv
+        export EDITOR=vim
+        # eval "$(direnv hook zsh)"
         ;;
     linux*)
         #Linux用の設定
@@ -247,3 +273,5 @@ case ${OSTYPE} in
 esac
 
 # vim:set ft=zsh:
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

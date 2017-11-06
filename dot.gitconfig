@@ -2,7 +2,7 @@
 	name = rynagash
 	email = nagashi.nishi@gmail.com
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Volumes/Transcend/cookielmo/.gitignore
 	editor = vim
 
 [color]
@@ -32,3 +32,16 @@
 
 [difftool "icdiff"]
 	cmd = icdiff --whole-file --recursive --highlight --line-numbers -L \"$BASE\" -L \"$REMOTE\" \"$LOCAL\" \"$REMOTE\"
+[http]
+	postBuffer = 524288000
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
