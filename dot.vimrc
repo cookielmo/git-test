@@ -1,6 +1,7 @@
 
 "#####表示設定#####
-set title "編集中のファイル名を表示
+"set title "編集中のファイル名を表示
+set notitle
 syntax on "コードの色分け
 set tabstop=4 "インデントをスペース4つ分に設定
 set smartindent "オートインデント

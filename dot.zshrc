@@ -203,7 +203,7 @@ setopt auto_menu
 # エイリアス
 alias la='ls -a'
 alias ll='ls -l'
-alias lla='ls -ahl'
+# alias lla='ls -ahl'
 
 #alias rm='rm -i'
 #alias cp='cp -i'
@@ -212,7 +212,7 @@ alias lla='ls -ahl'
 alias mkdir='mkdir -p'
 
 # sudo の後のコマンドでエイリアスを有効にする
-#alias sudo='sudo '
+alias sudo='sudo '
 
 # グローバルエイリアス
 #alias -g L='| less'
@@ -249,21 +249,14 @@ case ${OSTYPE} in
 
         # phpenv
         export PHP_BUILD_CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl) --with-libxml-dir=$(brew --prefix libxml2)"
+        export LDFLAGS="-L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/system"
 
-        # rbenv
-        # export RBENV_ROOT=/usr/local/bar/rbenv
-        # export PATH=$RBENV_ROOT/bin:$PATH
-        # eval "$(rbenv init -)"
+        # anyenv
+        export PATH="$HOME/.anyenv/bin:$PATH"
+        eval "$(anyenv init -)"
 
-        # ndenv
-        export PATH=$PATH:`npm bin -g`
-
-        # phpenv
-        # export PATH="/Users/cookielmo/.phpenv/bin:$PATH"
-        # eval "$(phpenv init -)"
-
-        # direnv
         export EDITOR=vim
+        # direnv
         # eval "$(direnv hook zsh)"
         ;;
     linux*)
